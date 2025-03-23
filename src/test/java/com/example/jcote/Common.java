@@ -1,5 +1,6 @@
 package com.example.jcote;
 
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -310,5 +311,43 @@ public class Common {
                 end = idx - 1;
             }
         }
+    }
+
+    /**
+     * 소수 찾기
+     */
+    @Test
+    public void _FindPrimeNumber() {
+        int num = 100;
+        ////
+
+        // 소수란 약수가 자기자신과 1밖에 없는 것
+        List<Integer> primeList = new ArrayList<>();
+        int start = 2;
+        while (start <= num) {
+            boolean isPrime = false;
+            if (start%2 == 0) {
+                if(start == 2) {
+                    isPrime = true;
+                }
+            } else {
+                isPrime = true;
+                for(int prime : primeList) {
+                    if (start%prime == 0) {
+                        isPrime = false;
+                    }
+                }
+            }
+            if(isPrime) {
+                primeList.add(start);
+            }
+            start++;
+        }
+        System.out.println(primeList);
+        int i = new Random().nextInt(5);
+        System.out.println(i);
+        int[] array = new int[primeList.size()];
+        List<Integer> list = Arrays.stream(array).boxed().toList();
+        
     }
 }
